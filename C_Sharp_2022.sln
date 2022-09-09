@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4evszak_2022_09_09", "4evsz
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CelsiusToFahrenheit", "CelsiusToFahrenheit\CelsiusToFahrenheit.csproj", "{79BCBF18-B272-4E1D-BE57-33900272650A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Csillagjegyek", "Csillagjegyek\Csillagjegyek.csproj", "{F57C8618-A970-4130-8FF5-DC30F045FEE9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{79BCBF18-B272-4E1D-BE57-33900272650A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79BCBF18-B272-4E1D-BE57-33900272650A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79BCBF18-B272-4E1D-BE57-33900272650A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F57C8618-A970-4130-8FF5-DC30F045FEE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F57C8618-A970-4130-8FF5-DC30F045FEE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F57C8618-A970-4130-8FF5-DC30F045FEE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F57C8618-A970-4130-8FF5-DC30F045FEE9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
