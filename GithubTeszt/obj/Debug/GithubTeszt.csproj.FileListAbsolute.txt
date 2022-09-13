@@ -1,0 +1,6 @@
+C:\Users\cisco\source\repos\C_Sharp_2022\GithubTeszt\bin\Debug\GithubTeszt.exe.config
+C:\Users\cisco\source\repos\C_Sharp_2022\GithubTeszt\bin\Debug\GithubTeszt.exe
+C:\Users\cisco\source\repos\C_Sharp_2022\GithubTeszt\bin\Debug\GithubTeszt.pdb
+C:\Users\cisco\source\repos\C_Sharp_2022\GithubTeszt\obj\Debug\GithubTeszt.csproj.CoreCompileInputs.cache
+C:\Users\cisco\source\repos\C_Sharp_2022\GithubTeszt\obj\Debug\GithubTeszt.exe
+C:\Users\cisco\source\repos\C_Sharp_2022\GithubTeszt\obj\Debug\GithubTeszt.pdb
