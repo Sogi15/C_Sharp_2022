@@ -8,59 +8,102 @@ namespace Csillagjegyek
 {
     class Program
     {
-        static void Main(string[] args)
+        internal class Csillagjegyek
         {
-            Console.WriteLine("Kérlek írd be a hónap számát!");
-            int honapszama, honaphiba = 0, napszama, naphiba = 0, napok;
-            int[] honapok = new int[] {31,28,31,30,31,30,31,31,30,31,30,31};
-            DateTime kos = new DateTime(2022,3,21);
-            DateTime bika = new DateTime(2022, 4, 21);
-            DateTime ikrek = new DateTime(2022, 5, 22);
-            DateTime rak = new DateTime(2022, 6, 22);
-            DateTime oroszlan = new DateTime(2022, 7, 23);
-            DateTime szuz = new DateTime(2022, 8, 24);
-            DateTime merleg = new DateTime(2022, 9, 23);
-            DateTime skorpio = new DateTime(2022, 10, 24);
-            DateTime nyilas = new DateTime(2022, 11, 23);
-            DateTime bak = new DateTime(2022, 12, 22);
-            DateTime vizonto = new DateTime(2023, 1, 21);
-            DateTime halak = new DateTime(2023, 2, 20);
+            /* szöveg	kezd	év napja	jegy
+             * Vízöntő:Január 21.- Február 19.	    01-21	20	    Vízöntő
+             * Halak: Február 20.-  Március 20.	    02-20	49	    Halak
+             * Kos: Március 21.- Április 20.	    03-21	80	    Kos
+             * Bika:  Április 21.- Május 21.	    04-21	110	    Bika
+             * Ikrek:Május 22.- Június 21.	        05-22	141	    Ikrek
+             * Rák:Június 22.- Július 22. 	        06-22	171	    Rák
+             * Oroszlán: Július 23.- Augusztus 23.	07-23	202	    Oroszlán
+             * Szűz: Augusztus 24.- Szeptember 22.	08-24	233	    Szűz
+             * Mérleg:Szeptember 23. - Október 23.	09-23	262	    Mérleg
+             * Skorpió:Október 24.- November 22.	10-24	293	    Skorpió
+             * Nyilas:November 23.- December 21.	11-23	322	    Nyilas
+             * Bak:December 22.- Január 20.	        12-22	351	    Bak
+             */
 
-            string csillagjegy = "";
-            do
+            static int kapottNap;
+            static int kapottHonap;
+            static void Main(string[] args)
             {
-                if (honaphiba > 0)
-                {
-                    Console.WriteLine("Kérlek helyes adatokat írj be! A hónapok száma 1-12 lehet!\nÍrd be újra a számot!");
-                }
-                honaphiba++;
-            } while (!int.TryParse(Console.ReadLine(), out honapszama) || honapszama > 12 || honapszama < 1);
-            Console.WriteLine("Kérlek add meg a napok számát!");
-            do
-            {
-                napok = honapok[honapszama-1];
-                if (naphiba > 0)
-                {
-                    Console.WriteLine("Kérlek helyes adatokat írj be!\nPróbáld újra!");
-                }
-                naphiba++;
-            } while (!int.TryParse(Console.ReadLine(), out napszama) || napszama > napok || napszama < 1);
-            DateTime datum = new DateTime(2022, honapszama, napszama);
-            if (datum>=kos && datum<bika){csillagjegy = "Kos";}
-            else if (datum >= bika && datum <= ikrek) { csillagjegy = "Bika"; }
-            else if (datum >= ikrek && datum <= rak) { csillagjegy = "Ikrek"; }
-            else if (datum >= rak && datum <= oroszlan) { csillagjegy = "Rák"; }
-            else if (datum >= oroszlan && datum <= szuz) { csillagjegy = "Oroszlán"; }
-            else if (datum >= szuz && datum <= merleg) { csillagjegy = "Szűz"; }
-            else if (datum >= merleg && datum <= skorpio) { csillagjegy = "Mérleg"; }
-            else if (datum >= skorpio && datum <= nyilas) { csillagjegy = "Skorpió"; }
-            else if (datum >= nyilas && datum <= bak) { csillagjegy = "Nyilas"; }
-            else if (datum >= bak && datum <= vizonto) { csillagjegy = "Bak"; }
-            else if (datum >= vizonto && datum <= halak) { csillagjegy = "Vizöntő"; }
-            else if (datum >= halak) { csillagjegy = "Halak"; }
+                Horoszkop horoszkop = new Horoszkop();
+                
+                //-- bekerjük a honapot
+                kapottHonap = egeszSzamBekerese("Melyik hónap?", 1, 12);
+                //-- bekerjük a napot
+                kapottNap = egeszSzamBekerese("Melyik nap?", 1, 31);
+                //-- meghatározzuk az éven belüli napszámot
+                int aNapSorszama = new DateTime(DateTime.Now.Year, kapottHonap, kapottNap).DayOfYear;
 
-            Console.WriteLine($"Gratulálok a csillagjegyed: {csillagjegy}");
-            Console.ReadKey();
+                //-- megadjuk a csillagjegyet
+                string csillagjegy = DatumToCsillagjegy(kapottHonap, kapottNap);
+
+                Console.WriteLine($"{kapottHonap} hónap {kapottNap} napja a {csillagjegy} csillagjegybe tartozik");
+                //-- leállítjuk a programot
+                Console.WriteLine("\nProgram vége!");
+                Console.ReadKey();
+            }
+
+            //private static string DatumToCsillagjegy(int kapottHonap, int kapottNap)
+            //{
+            //    int hc = 0;
+            //    DateTime[] date = new DateTime[1] { new DateTime(2022, kapottHonap, kapottNap), };
+            //    //--tömb(ök)
+            //    DateTime[] dates = new DateTime[13] {
+            //    new DateTime(2021, 12, 31),
+            //    new DateTime(2022, 01, 20),
+            //    new DateTime(2022, 02, 19),
+            //    new DateTime(2022, 03, 21),
+            //    new DateTime(2022, 04, 20),
+            //    new DateTime(2022, 05, 21),
+            //    new DateTime(2022, 06, 22),
+            //    new DateTime(2022, 07, 23),
+            //    new DateTime(2022, 08, 23),
+            //    new DateTime(2022, 09, 23),
+            //    new DateTime(2022, 10, 23),
+            //    new DateTime(2022, 11, 22),
+            //    new DateTime(2022, 12, 22) };
+            //    String[] jegyek = new String[13]{
+            //"Bak","Vízöntő","Halak","Kos",
+            //"Bika","Ikrek","Rák",
+            //"Oroszlán","Szűz","Mérleg",
+            //"Skorpió","Nyilas","Bak" };
+            //    //--ciklus
+            //    for (int i = 0; i < dates.Length; i++)
+            //    {
+            //        if (dates[i] < date[0])
+            //        {
+            //            hc++;
+            //        }
+            //        else
+            //        {
+            //            i = 32;
+            //        }
+            //    }
+            //    //-- program vég
+            //    //Console.WriteLine("Te a {0} csillag jegyében születét.", jegyek[hc - 1]);
+
+            //    return jegyek[hc - 1];
+            //}
+
+            private static int egeszSzamBekerese(string szoveg, int tol, int ig)
+            {
+                int egeszSzam = 0;
+                int bekeresekSzama = 0;
+                Console.WriteLine(szoveg);
+                do
+                {
+                    if (bekeresekSzama > 0)
+                    {
+                        Console.WriteLine("Nem megfellő érték!");
+                    }
+                    bekeresekSzama++;
+                } while (!int.TryParse(Console.ReadLine(), out egeszSzam) || egeszSzam < tol || egeszSzam > ig);
+                return egeszSzam;
+            }
         }
     }
 }
